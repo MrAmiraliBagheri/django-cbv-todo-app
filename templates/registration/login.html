@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+</head>
+<body>
+    <h2> Login or Signup ToDo App </h2>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <p>username or pass is incorrect</p>
+        {% endif %}
+
+        {% for field in form %}
+            <div class="field-wrapper">
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button type="submit">Login</button>
+        <a href="{% url 'signup' %}">sign up</a>
+        
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <p>wellcome {{ user.username }}</p>
+    
+    <!-- روش صحیح خروج با استفاده از فرم و POST -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-logout">Logout</button>
+    </form>
+
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+
+    <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+    </form>
+<hr>
+{% for task in tasks %}
+    <div class="tasks_container" style="width: 100%; max-width:450px">
+        <span>{{ task.title }} </span>
+        
+        <form action="{% url 'delete_task' task.id %}" method="POST" style="margin: 0; padding: 0;">
+            {% csrf_token %}
+            <button type="submit" style="background: #f8d7da; color: #721c24; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                delete
+            </button>
+        </form>
+    </div>
+{% endfor %}
+    
+</body>
+</html>

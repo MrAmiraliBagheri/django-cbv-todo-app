@@ -1,0 +1,197 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6; /* رنگ پس‌زمینه روشن */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* حداقل ارتفاع صفحه */
+    margin: 0;
+    padding: 20px; /* اضافه کردن padding در صورت کوچک بودن صفحه */
+    box-sizing: border-box; /* اطمینان از اینکه padding بخشی از ارتفاع کل است */
+}
+
+/* Container for the form */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px; /* ارتفاع بخش بالای صفحه */
+    background: linear-gradient(to right, #4facfe, #00f2fe); /* گرادیانت آبی */
+    z-index: 1;
+}
+
+/* The form itself */
+form {
+    position: relative; /* برای قرار گرفتن دکمه ورود در بالا */
+    z-index: 2;
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px; /* گوشه‌های گرد */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* سایه نرم */
+    width: 100%;
+    max-width: 400px; /* حداکثر عرض فرم */
+    text-align: center; /* برای تراز کردن محتوا */
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+/* Field Wrapper */
+.field-wrapper {
+    margin-bottom: 20px;
+    text-align: left; /* تراز لیبل‌ها به چپ */
+}
+
+.field-wrapper label {
+    display: block; /* لیبل در خط خودش */
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Input Fields */
+.field-wrapper input[type="text"],
+.field-wrapper input[type="password"],
+.field-wrapper input[type="email"], /* اگر برای ایمیل استفاده شد */
+.field-wrapper input[type="number"], /* اگر برای عدد استفاده شد */
+.field-wrapper input[type="date"] /* اگر برای تاریخ استفاده شد */
+{
+    width: calc(100% - 20px); /* محاسبه عرض با در نظر گرفتن padding */
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field-wrapper input:focus {
+    outline: none;
+    border-color: #4facfe; /* رنگ آبی هنگام فوکوس */
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2); /* سایه ملایم */
+}
+
+/* Help Text */
+.field-wrapper small {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+    font-size: 0.85em;
+}
+
+/* Error Messages */
+.field-wrapper p[style*="color: red;"] {
+    color: #e74c3c !important; /* رنگ قرمز برای خطا */
+    margin-top: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background: linear-gradient(to right, #4facfe, #00f2fe); /* همان گرادیانت */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%; /* دکمه کل عرض را بگیرد */
+    margin-top: 10px; /* کمی فاصله از فیلدها */
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(to right, #439dee, #00d9ff); /* کمی تیره‌تر */
+    transform: translateY(-2px); /* جلو آمدن دکمه */
+}
+
+button[type="submit"]:active {
+    transform: translateY(0); /* برگشتن دکمه */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    form {
+        padding: 30px 20px;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    button[type="submit"] {
+        font-size: 1em;
+    }
+}
+
+.auth-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.auth-btn {
+    width: 50%;
+    padding: 12px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.footer-link {
+    text-align: center;
+    margin-top: 15px;
+}
+/* استایل برای بخش پایین فرم */
+.auth-footer {
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.auth-footer p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* استایل لینک ثبت نام */
+.signup-link {
+    color: #4facfe; /* رنگ آبی مشابه گرادیانت */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+    color: #00f2fe;
+}
+
+/* مطمئن شو دکمه لاگین هم کلاس auth-btn را دارد */
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
