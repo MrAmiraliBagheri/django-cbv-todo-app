@@ -195,3 +195,80 @@ button[type="submit"]:active {
     cursor: pointer;
     margin-top: 10px;
 }
+/* استایل مخصوص صفحه ویرایش */
+
+/* استایل دکمه Update (رنگ متفاوت برای تمایز) */
+.update-btn {
+    background: linear-gradient(to right, #43e97b, #38f9d7); /* گرادیانت سبز ملایم */
+    margin-top: 20px;
+}
+
+.update-btn:hover {
+    background: linear-gradient(to right, #38f9d7, #43e97b);
+    transform: translateY(-2px);
+}
+
+/* استایل لینک لغو (Cancel) */
+.cancel-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.cancel-link:hover {
+    color: #ff4b2b; /* قرمز هنگام هاور */
+    text-decoration: underline;
+}
+
+/* استایل فیلدها برای اینکه در صفحه Update هم درست نمایش داده شوند */
+.field-wrapper {
+    margin-bottom: 15px;
+    text-align: left; /* اگر فارسی است بگذار right */
+}
+
+.field-wrapper label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.field-wrapper input, 
+.field-wrapper textarea, 
+.field-wrapper select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* بسیار مهم برای جلوگیری از بیرون زدگی */
+    font-size: 1rem;
+}
+
+.field-wrapper input:focus, 
+.field-wrapper textarea:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+}
+
+.help-text {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+.error-msg {
+    color: #ff4b2b;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}

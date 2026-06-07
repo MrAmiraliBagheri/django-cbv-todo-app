@@ -1,9 +1,9 @@
-from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
-
-from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
+from django.views import View
 from .models import Task
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -36,3 +36,20 @@ class DeleteTaskView(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         # فقط اجازه می‌دهد کاربر تسک‌های خودش را حذف کند
         return self.model.objects.filter(user=self.request.user)
+
+
+class EditTaskView(UpdateView):
+    model = Task
+    fields = ["title"]
+    template_name_suffix = "_update_form"
+    success_url = reverse_lazy('create-task')
+
+
+class DoneTaskView(View):
+    
+    def post(self,request, *args, **kwargs):
+        pk = kwargs.get('pk')
+        task = get_object_or_404(Task, pk=pk)
+        task.status = 'complete'
+        task.save()
+        return redirect('create-task')
